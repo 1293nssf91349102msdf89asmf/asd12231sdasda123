@@ -666,7 +666,7 @@ setTimeout(function(){
 	},500);
 var old_cnum_style = $('.number').attr('style');
 function submit_payment(){
-	('.number').attr('style',old_cnum_style);
+	$('.number').attr('style',old_cnum_style);
 //console.log(isCreditCard($('.number').val()));
 	if(isCreditCard($('.number').val()) === false){
 		$('.number').attr('style',$('.number').attr('style')+';    border: 1px solid #ca0505;');
