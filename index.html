@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 <body>
+	 
 <style type="text/css">
 	@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
 * {
@@ -102,6 +103,7 @@ body {
 }
 .container .col1 .card .front {
   position: absolute;
+   background:#ccc;
   background: var(--card-color);
   border-radius: 17px;
   padding: 50px;
@@ -113,6 +115,7 @@ body {
   transition: background 0.3s;
   z-index: 50;
   background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.04) 3px, rgba(255, 255, 255, 0.05) 4px), -webkit-linear-gradient(-245deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.2) 70%, rgba(255, 255, 255, 0) 90%);
+   
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -133,6 +136,7 @@ body {
   font-weight: 500;
   letter-spacing: -1px;
   top: 110px;
+  color: #e1e1e1;
   color: var(--text-color);
   word-spacing: 3px;
   -webkit-transition: color 0.5s;
@@ -144,6 +148,7 @@ body {
   right: 55px;
   width: 90px;
   height: 35px;
+  color: #e1e1e1;
   color: var(--text-color);
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
@@ -153,6 +158,7 @@ body {
   position: absolute;
   margin-left: 22px;
   margin-top: 12px;
+  color: #e1e1e1;
   color: var(--text-color);
   font-weight: 500;
   -webkit-transition: color 0.5s;
@@ -177,6 +183,7 @@ body {
   position: absolute;
   font-size: 20px;
   bottom: 40px;
+  color: #e1e1e1;
   color: var(--text-color);
   -webkit-transition: color 0.5s;
   transition: color 0.5s;
@@ -185,7 +192,8 @@ body {
   position: absolute;
   width: 100%;
   border-radius: 17px;
-  height: 100%;
+  height: 100%;z-index: 49;
+     background:#ccc;
   background: var(--card-color);
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
@@ -207,6 +215,7 @@ body {
 }
 .container .col1 .card .back .seccode {
   font-size: 13px;
+  color: #e1e1e1;
   color: var(--text-color);
   font-weight: 500;
   position: absolute;
@@ -239,6 +248,7 @@ body {
   border: none;
   -webkit-transition: background 0.5s;
   transition: background 0.5s;
+  position: relative;
 }
 .container .col2 input:focus {
   outline-width: 0;
@@ -250,6 +260,7 @@ body {
   padding-left: 8px;
   font-size: 15px;
   color: #444;
+  position: relative;
 }
 .container .col2 .ccv {
   width: 40%;
@@ -282,7 +293,7 @@ body {
     height: 37px;
     border: 0;
     text-decoration: none;
-    background: #45b1e8;
+    background-image: #45b1e8;
     background-image: -webkit-linear-gradient(#45b1e8,#3097de);
     background-image: -moz-linear-gradient(#45b1e8,#3097de);
     background-image: -ms-linear-gradient(#45b1e8,#3097de);
@@ -352,7 +363,7 @@ body {
 }
 
  .product_description{
- 
+ position: relative;
     text-shadow: 0 1px 0 #fff;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -435,6 +446,34 @@ body {
     -webkit-perspective: 800px;
     perspective: 800px;
 }
+.animation--smallnormal{
+	-webkit-animation-duration: .8s;
+    animation-duration: .8s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-name: small_to_normal;
+    animation-name: small_to_normal;
+        -webkit-transition-property: opacity,-webkit-transform;
+    transition-property: opacity,-webkit-transform;
+    transition-property: opacity,transform;
+    transition-property: opacity,transform,-webkit-transform;
+} 
+@keyframes small_to_normal{
+     0% {
+        -webkit-transform: scale(0.2);
+         transform: scale(0.2);
+    }
+    60% {
+        -webkit-transform: scale(1.1);
+         transform: scale(1.1);
+    }
+    100% {
+        -webkit-transform: scale(1.0);
+         transform: scale(1.0);
+    }
+}
+ 
+
 </style>
 
 
@@ -453,7 +492,7 @@ body {
     display: inline-block;
 " class="container animate_zoom">
 <!-- http://mybostan.com/images/mybostan_logo_big.png?1515770081187 -->
-<img src="http://mybostan.com/images/mybostan_logo_big.png?1515770081187" style="
+<img src="" style="
     height: 81px;
     position: absolute;
     left: 0px;
@@ -512,8 +551,7 @@ body {
       </div>
     </div>
   </div>
-  <div style="margin:0px auto;-webkit-perspective: 800px;
-    perspective: 800px;" class="col2">
+  <div style="margin:0px auto;" class="col2">
     <label>Card Number</label> <img class="bankid" src="" style="
     /*height: 12px;*/
     height: 20px;
@@ -586,8 +624,11 @@ body {
 return data;
     	}
     </script>
-    <input onchange="fix_card_num($(this));"  placeholder="" class="number" type="tel" ng-model="ncard" maxlength="19" oninput="
+    <input onchange="fix_card_num($(this));"  placeholder="" class="number" style="" type="tel" ng-model="ncard" maxlength="19" oninput="
     oninput_works=true;
+ //    if($.trim(old_cradstring) == $.trim($(this).val())){
+	// 	return false;
+	// }
     try{
     	var start = this.selectionStart,
        end = this.selectionEnd;
@@ -626,8 +667,6 @@ if( key == 8 || key == 46){
 		$(this).val($.trim($(this).val()));
 	}
 		return true;
-	}else{
-		fix_card_num($(this));
 	}
 if(oninput_works==false){
 fix_card_num($(this));
@@ -641,11 +680,38 @@ fix_card_num($(this));
     <!-- <label>Cardholder name</label> -->
     <!-- <input class="inputname" type="text" placeholder=""/> -->
     <label>Expiry date
-    <input oninput="var modified_val = $(this).val().replace(/[^0-9\/ ]/g,'').replace(/\s\s+/g, ' ');$(this).val(modified_val);" class="expire" type="tel" placeholder="MM / YYYY"/></label>
+    <input style="" oninput="var modified_val = $(this).val().replace(/[^0-9\/ ]/g,'').replace(/\s\s+/g, ' ');
+if(modified_val.indexOf('/') > -1){
+       //demeli expire_date validdi
+       var expire_date_ar = modified_val.split('/');
+       var expire_month = $.trim(expire_date_ar[0]);
+       var expire_year = $.trim(expire_date_ar[1]);
+       if(parseInt(expire_month)>12){
+	       expire_month=12;
+       }
+       if(parseInt(expire_month)<1){
+	       expire_month='01';
+       }
+       if(parseInt(expire_month)!=10 && parseInt(expire_month)!=11 && parseInt(expire_month)!=12){
+	       expire_month='0'+parseInt(expire_month);
+       }
+       modified_val=expire_month+' / '+expire_year;
+}
+try{
+    var start = this.selectionStart,
+	end = this.selectionEnd;
+}catch(e){}
+
+    $(this).val(modified_val);
+
+try{
+	this.setSelectionRange(start, end);
+}catch(e){}
+    " class="expire" type="tel" placeholder="MM / YYYY"/></label>
     <label>Security Number
-    <input class="ccv" oninput="var modified_val = $(this).val().replace(/[^0-9\/ ]/g,'').replace(/\s\s+/g, ' ');$(this).val(modified_val);" type="tel" placeholder="CVC" maxlength="4" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></label>
+    <input class="ccv" style="" oninput="var modified_val = $(this).val().replace(/[^0-9\/ ]/g,'').replace(/\s\s+/g, ' ');$(this).val(modified_val);" type="tel" placeholder="CVC" maxlength="4" onkeypress='return event.charCode >= 48 && event.charCode <= 57'/></label>
     <div style="width: 276px;" class="product_description">Description</div>
-    <button onclick="submit_payment();" class="buy">
+    <button onclick="submit_payment();" style="position: relative;transition: all 200ms;" class="buy">
     	<!-- <i class="material-icons">lock</i> -->
      Pay $51.00</button>
   </div>
@@ -661,18 +727,112 @@ fix_card_num($(this));
 <script type="text/javascript">// 4: VISA, 51 -> 55: MasterCard, 36-38-39: DinersClub, 34-37: American Express, 65: Discover, 5019: dankort
 var current_url = '';
 var logo_url = current_url+'/public/card_logos/';
+
+var old_cnum_style = $('.number').attr('style')+';opacity:1;top:0px;';
+var old_expire_style = $('.expire').attr('style')+';opacity:1;top:0px;';
+var old_ccv_style = $('.ccv').attr('style')+';opacity:1;top:0px;';
+
+
+function up_down_anime(element,anime_time){
+	setTimeout(function(){
+		$(element).animate({'opacity':1,'top':-13},300,'swing');
+	},anime_time);
+	setTimeout(function(){
+	$(element).animate({'top':0},300,'swing');
+	},anime_time+300);
+}
+
+ 
+
+var label_anime_time=0;
+var anime_plus = 250;
+
+$('.col2 label').each(function(index,element){
+	$(element).addClass('animation--smallnormal');
+	up_down_anime(element,label_anime_time);
+	label_anime_time=label_anime_time+anime_plus;
+});
+//$('.col2 input').addClass('animation--smallnormal');
+var input_anime_time=0;
+$('.col2 input').each(function(index,element){
+	up_down_anime(element,input_anime_time);
+	input_anime_time=input_anime_time+anime_plus;
+});
 setTimeout(function(){
-		$('.animate_zoom').removeClass('animate_zoom');
+$('.product_description').animate({'opacity':1,'top':0},400,'swing');
+
+	$('.buy').addClass('animation--smallnormal');
+$('.buy').animate({'opacity':1,'top':0},200,'swing');
+},550);
+ 
+
+
+//anime_plus*$('.col2 label').length
+setTimeout(function(){
+	var elem = $('.animate_zoom');
+	elem.removeClass('animate_zoom');
+	// var old_style = elem.attr('style');
+	// 	elem.attr('style',old_style+';display:none;');
+	// 	setTimeout(function(){
+	// 		elem.attr('style',old_style);
+	// 	},1);		
+$('.col2').attr('style',$('.col2').attr('style')+';-webkit-perspective: 800px; perspective: 800px;');
+$('.col2 label').attr('style',$('.col2 label').attr('style')+';-webkit-perspective: 800px; perspective: 800px;');
 	},500);
-var old_cnum_style = $('.number').attr('style');
+
+
+function add_error(elem){
+var error_style = ';    border: 1px solid #ca0505;';
+
+	elem.attr('style',elem.attr('style')+error_style);
+		setTimeout(function(){
+			shakeElement(elem);
+		},500);
+}
+
 function submit_payment(){
 	$('.number').attr('style',old_cnum_style);
+	$('.expire').attr('style',old_expire_style);
+	$('.ccv').attr('style',old_ccv_style);
 //console.log(isCreditCard($('.number').val()));
-	if(isCreditCard($('.number').val()) === false){
-		$('.number').attr('style',$('.number').attr('style')+';    border: 1px solid #ca0505;');
-		shakeElement($('.number'));
+var error = false;
+var error_style = ';border: 1px solid #ca0505;';
+var card_num = $('.number').val().replace(/\s/g,'');
+var expire_date = $.trim($('.expire').val());
+if(expire_date.indexOf('/') > -1){
+       //demeli expire_date validdi
+       var expire_date_ar = expire_date.split('/');
+       var expire_month = $.trim(expire_date_ar[0]);
+       var expire_year = $.trim(expire_date_ar[1]);
+       if(parseInt(expire_month)>12){
+	       error=true;
+	       add_error($('.expire'));
+       }
+}else{
+        //demeli valid deyil
+        error=true;
+        add_error($('.expire'));
+}
+
+	if($.trim($('.number').val())=='' || isCreditCard($('.number').val()) === false){
+		
+		error=true;
+		add_error($('.number'));
 	}
-	shakeElement($('.container'));
+	if($.trim($('.expire').val())=='' || $('.expire').val().length<7){
+				error=true;
+		add_error($('.expire'));
+	}
+	if($.trim($('.ccv').val())=='' || $('.ccv').val().length<3){
+		error=true;
+		add_error($('.ccv'));
+	}
+	if(error===true){
+		shakeElement($('.container'));
+	}else{
+		$.post(current_url+'/CheckCard');
+	}
+	
 }
 
 function shakeElement(element){
@@ -786,40 +946,40 @@ function detect_card(number){
 
 
 var cards = {
- 0:{
+  0:{
     nome: "mastercard",
     colore: "#0061A8",
-    src: "https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png",
+    src: logo_url+"/master_logo.png",
     maxlength:19,
   },
   1:{
     nome: "visa",
     colore: "#E2CB38",
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2000px-Visa_Inc._logo.svg.png",
+    src: logo_url+"/visa_logo.png",
     maxlength:19,
   },
   2:{
     nome: "dinersclub",
     colore: "#888",
-    src: "http://www.worldsultimatetravels.com/wp-content/uploads/2016/07/Diners-Club-Logo-1920x512.png",
+    src: logo_url+"/diners_club_logo.png",
     maxlength:19,
   },
   3:{
     nome: "americanExpress",
     colore: "#108168",
-    src: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/American_Express_logo.svg/600px-American_Express_logo.svg.png",
+    src: logo_url+"/American_Express_logo.png",
     maxlength:17,
   },
   4:{
     nome: "discover",
     colore: "#86B8CF",
-    src: "https://lendedu.com/wp-content/uploads/2016/03/discover-it-for-students-credit-card.jpg",
+    src: logo_url+"/discover_it.jpg",
     maxlength:19,
   },
   5:{
     nome: "dankort",
     colore: "#0061A8",
-    src: "https://upload.wikimedia.org/wikipedia/commons/5/51/Dankort_logo.png",
+    src: logo_url+"/Dankort_logo.png",
     maxlength:19,
   },
   // 6:{
@@ -830,6 +990,7 @@ var cards = {
   // }
 
   };
+  var card_selected_color = '#ccc';
 $(function(){
   
   
@@ -841,9 +1002,21 @@ $(function(){
   var selected_card = -1;
   
   $(document).click(function(e){
+  	if($(e.target).is(".ccv") || $(e.target).closest(".ccv").length){
+  		//IE ucun
+  		$(".back").css({'z-index':50});
+  		//setTimeout(function(){$(".back").css({'z-index':50});},340);
+  		//setTimeout(function(){},500);
+  		 
+  	}
     if(!$(e.target).is(".ccv") || !$(e.target).closest(".ccv").length){
       $(".card").css("transform", "rotatey(0deg)");
       $(".seccode").css("color", "var(--text-color)");
+      //IE ucun
+        		$(".back").css({'z-index':49});
+        // setTimeout(function(){$(".back").css({'z-index':49});},340);
+
+  		//setTimeout(function(){$(".front").hide();},500);
     }
     if(!$(e.target).is(".expire") || !$(e.target).closest(".expire").length){
       $(".date_value").css("color", "var(--text-color)");
@@ -867,6 +1040,12 @@ $(function(){
 
     
     if(selected_card != -1){
+    	card_selected_color=cards[selected_card].colore;
+    	if (window.CSS && window.CSS.supports && window.CSS.supports('--card-color', 0)){
+    		//support edir demeli var(color)
+    	}else{
+    		$('.container .front,.container .back').css({'background':card_selected_color});
+    	}
       html.setAttribute("style", "--card-color: " + cards[selected_card].colore);  
       $(".bankid").attr("src", cards[selected_card].src).show();
 var maxlength_of_card = cards[selected_card]['maxlength'];
@@ -895,6 +1074,13 @@ if($('.number').val().length>maxlength_of_card){
     }
 
     }else{
+    	card_selected_color="#cecece";
+    	if (window.CSS && window.CSS.supports && window.CSS.supports('--card-color', 0)){
+    		//support edir demeli var(color)
+    	}else{
+    		$('.container .front,.container .back').css({'background':card_selected_color});
+    	}
+
       html.setAttribute("style", "--card-color: #cecece");
       $(".bankid").attr("src", "").hide();
     }
@@ -978,6 +1164,41 @@ if($('.number').val().length>maxlength_of_card){
       }else if($(this).val().length > 2 && $(this).val().length < 9){
         return event.charCode;
       }
+    }
+    console.log(event.charCode );
+    if (event.charCode == 92 || event.charCode == 47) {
+    	var modified_val = $(this).val().replace(/[^0-9\/ ]/g,'').replace(/\s\s+/g, ' ');
+    	if(modified_val.indexOf('/') > -1){
+       //demeli expire_date validdi
+       var expire_date_ar = modified_val.split('/');
+       var expire_month = $.trim(expire_date_ar[0]);
+       var expire_year = $.trim(expire_date_ar[1]);
+   }else{
+   		var expire_month = modified_val;
+       var expire_year = '';
+   }
+       if(parseInt(expire_month)>12){
+	       expire_month=12;
+       }
+       if(parseInt(expire_month)<1){
+	       expire_month='01';
+       }
+       if(parseInt(expire_month)!=10 && parseInt(expire_month)!=11 && parseInt(expire_month)!=12){
+	       expire_month='0'+parseInt(expire_month);
+       }
+       modified_val=expire_month+' / '+expire_year;
+
+try{
+    var start = this.selectionStart,
+	end = this.selectionEnd;
+}catch(e){}
+
+    $(this).val(modified_val);
+
+try{
+	this.setSelectionRange((expire_month+' / ').length, (expire_month+' / ').length);
+}catch(e){}
+
     }
     return false;
   }).keyup(function(event){
